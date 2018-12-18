@@ -5,7 +5,6 @@ namespace KneatAssignment
 {
     public class Helper
     {
-
         /// <summary>
         /// Get the ammount of stops required for the provided input for the staraship
         /// </summary>
@@ -15,7 +14,7 @@ namespace KneatAssignment
         /// <returns>The number of stops that are required for the starship</returns>
         public int GetStopsRequired(int input, string consumables, string MGLT)
         {
-            int hours = 0, consumableValue = 0;
+            int hours, consumableValue;
 
             var consumableValueString = Regex.Match(consumables, @"\d+").Value;
             if (int.TryParse(consumableValueString, out consumableValue))
@@ -30,18 +29,24 @@ namespace KneatAssignment
                     hours = CalculateHours(TimeEnum.DAY, consumableValue);
                 else if (consumables.Contains("hour") || consumables.Contains("hours"))
                     hours = CalculateHours(TimeEnum.HOUR, consumableValue);
-            }
+                else
+                    hours = consumableValue;
 
-            int mglt = 0;
-            if (int.TryParse(MGLT, out mglt))
-            {
-                return (input / mglt) / hours;
+                int mglt;
+                if (int.TryParse(MGLT, out mglt))
+                {
+                    return (input / mglt) / hours;
+                }
+                else
+                {
+                    throw new Exception("Error in parsing the MGLT value.");
+                }
             }
             else
             {
-                Console.WriteLine("Error in parsing the MGLT");
-                return -1;
+                throw new Exception("Error in parsing the consumable value.");
             }
+
         }
 
         /// <summary>
@@ -65,7 +70,7 @@ namespace KneatAssignment
                 case TimeEnum.HOUR:
                     return value;
                 default:
-                    return 0;
+                    return value;
             }
         }
 
@@ -73,31 +78,31 @@ namespace KneatAssignment
         /// Gets the user input from the console
         /// </summary>
         /// <returns></returns>
-        public int GetInput()
+        public int? GetInput()
         {
-            int mgltInt;
+            int mgltNumber;
 
             Console.WriteLine("Enter number of MGLT(mega lights) or enter 'q' to quit: ");
             var mgltInput = Console.ReadLine();
 
             while (mgltInput.Trim().ToLower() != "q")
             {
-                if (!int.TryParse(mgltInput, out mgltInt))
+                if (!int.TryParse(mgltInput, out mgltNumber))
                 {
                     Console.WriteLine("Input is not a number. Try again or enter 'q' to quit: ");
                     mgltInput = Console.ReadLine();
                 }
-                else if (mgltInt < 0)
+                else if (mgltNumber < 0)
                 {
                     Console.WriteLine("Input must be greather than 0! Try again or enter 'q' to quit: ");
                     mgltInput = Console.ReadLine();
                 }
                 else
                 {
-                    return mgltInt;
+                    return mgltNumber;
                 }
             }
-            return -1;
+            return null;
         }
     }
 }
