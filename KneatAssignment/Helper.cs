@@ -16,9 +16,11 @@ namespace KneatAssignment
         {
             int hours, consumableValue;
 
+            // Parse the consumable number
             var consumableValueString = Regex.Match(consumables, @"\d+").Value;
             if (int.TryParse(consumableValueString, out consumableValue))
             {
+                // check the consumable time type, this can be either singular (e.g. year) or plural (e.g. years)
                 if (consumables.Contains("year") || consumables.Contains("years"))
                     hours = CalculateHours(TimeEnum.YEAR, consumableValue);
                 else if (consumables.Contains("month") || consumables.Contains("months"))
@@ -35,25 +37,25 @@ namespace KneatAssignment
                 int mglt;
                 if (int.TryParse(MGLT, out mglt))
                 {
-                    return (input / mglt) / hours;
+                    // formula is the user input (MGLT) divided by the MGLT of the starship, the result of this is then divided by the ammount of hours the starship can go before needing to resupply
+                    return (input / mglt) / hours; 
                 }
                 else
                 {
-                    throw new Exception("Error in parsing the MGLT value.");
+                    throw new Exception("Error in parsing the MGLT value."); // throw an error when issues arise parsing the numbers
                 }
             }
             else
             {
-                throw new Exception("Error in parsing the consumable value.");
+                throw new Exception("Error in parsing the consumable value."); // throw an error when issues arise parsing the numbers
             }
-
         }
 
         /// <summary>
         /// Calculates the number of hours based on the time type e.g. days, weeks or months
         /// </summary>
-        /// <param name="timeType"></param>
-        /// <param name="value"></param>
+        /// <param name="timeType">The type of time that is being used to calculate e.g. Year, Month etc.</param>
+        /// <param name="value">The ammount of the given time type that is being used to calculate e.g. 4 hours</param>
         /// <returns></returns>
         int CalculateHours(TimeEnum timeType, int value)
         {
@@ -77,7 +79,7 @@ namespace KneatAssignment
         /// <summary>
         /// Gets the user input from the console
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The number of MGLT or null if exiting</returns>
         public int? GetInput()
         {
             int mgltNumber;

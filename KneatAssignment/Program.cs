@@ -23,7 +23,7 @@ namespace KneatAssignment
 
                 Helper helper = new Helper(); // Create an instance of the helper class
                 int? inputMGLT = helper.GetInput(); // Get the user input from the console
-                while (inputMGLT.HasValue)
+                while (inputMGLT.HasValue) // Continue running until the user enters q and the GetInput function returns null
                 {
                     logger.Info("Input MGLT was " + inputMGLT);
                     Console.WriteLine("------------------------------");

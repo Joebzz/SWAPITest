@@ -19,12 +19,12 @@ namespace SWAPIHelper.Tests
 
                 var starships = core.GetAllStarships();
 
-                Assert.IsNotNull(starships);
+                Assert.IsNotNull(starships); // check that there is a response from the API
             }
-            catch (Exception e)
+            catch
             {
                 Assert.Fail();
-                throw e;
+                throw;
             }
         }
 
@@ -39,12 +39,12 @@ namespace SWAPIHelper.Tests
                 var starships = core.GetAllStarships();
                 var starship = starships.Result.FirstOrDefault();
 
-                Assert.IsInstanceOfType(starship, typeof(Starship));
+                Assert.IsInstanceOfType(starship, typeof(Starship));  /// check if the returned object is a starship object
             }
-            catch (Exception e)
+            catch
             {
                 Assert.Fail();
-                throw e;
+                throw;
             }
         }
     }

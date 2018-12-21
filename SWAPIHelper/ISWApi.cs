@@ -8,11 +8,16 @@ using System.Threading.Tasks;
 
 namespace SWAPIHelper
 {
+    /// <summary>
+    /// Refit Interface
+    /// </summary>
     interface ISWApi
     {
-        [Get("/starships/{starship}")]
-        Task<SWEntityList<Starship>> GetStarship(string starship);
+        // Get a single starship
+        [Get("/starships/{starshipId}")]
+        Task<SWEntityList<Starship>> GetStarship(string starshipId);
 
+        // get all starships
         [Get("/starships/")]
         Task<SWEntityList<Starship>> GetStarships(int? page = null);
     }

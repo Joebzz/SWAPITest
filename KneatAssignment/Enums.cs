@@ -23,9 +23,9 @@ namespace KneatAssignment
     /// </summary>
     public enum TimeInHours
     {
-        YEAR = 8760,
-        MONTH = 720,
-        WEEK = 168,
+        YEAR = DAY * 365, // 365 days in a year, this does not take into account leap years.
+        MONTH = DAY * 30, // this is an approximation as it does not state which month so the assumption is that a 'month' has 30 days
+        WEEK = DAY * 7, // 7 days in a week
         DAY = 24
     }
 }

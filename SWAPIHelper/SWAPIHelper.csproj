@@ -50,7 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core.cs" />
-    <Compile Include="Entities\ISWEntityList.cs" />
     <Compile Include="Entities\Starship.cs" />
     <Compile Include="Entities\SWEntity.cs" />
     <Compile Include="Entities\SWEntityList.cs" />

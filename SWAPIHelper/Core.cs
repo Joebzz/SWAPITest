@@ -27,15 +27,17 @@ namespace SWAPIHelper
 
             try
             {
+                // Use Refit: The automatic type-safe REST library
                 var swApi = RestService.For<ISWApi>(BaseUrl);
-
+                
+                // page through the results
                 int page = 1;
                 while (true)
                 {
                     var starships = await swApi.GetStarships(page);
-                    returnStarships.AddRange(starships.results);
+                    returnStarships.AddRange(starships.results); // add the starships to the list
 
-                    // Return when no next pages left
+                    // break the loop when no next pages left
                     if (string.IsNullOrEmpty(starships.next))
                         break;
                     else

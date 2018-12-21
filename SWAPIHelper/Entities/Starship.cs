@@ -85,20 +85,5 @@ namespace SWAPIHelper.Entities
         /// An array of People URL Resources that this starship has been piloted by.
         /// </summary>
         public List<string> pilots { get; set; }
-
-        /// <summary>
-        /// the hypermedia URL of this resource.
-        /// </summary>
-        public string url { get; set; }
-
-        /// <summary>
-        /// the ISO 8601 date format of the time that this resource was created.
-        /// </summary>
-        public DateTime created { get; set; }
-
-        /// <summary>
-        /// the ISO 8601 date format of the time that this resource was edited.
-        /// </summary>
-        public DateTime edited { get; set; }
     }
 }

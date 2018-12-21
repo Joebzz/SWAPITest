@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SWAPIHelper.Entities
 {
-    class SWEntityList<T> : ISWEntityList<T>
+    // Use a generic class so that it can be used in future for other types of objects returned in a collection
+    class SWEntityList<T> 
     {
         /// <summary>
         /// Total number of results

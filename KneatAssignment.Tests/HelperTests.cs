@@ -6,7 +6,7 @@ namespace KneatAssignment.Tests
     public class HelperTests
     {
         [TestMethod()]
-        public void GetStopsRequiredTestForYwing()
+        public void GetStopsRequired_TestForYwing()
         {
             // Setup test data
             int expected = 74;
@@ -22,7 +22,7 @@ namespace KneatAssignment.Tests
         }
 
         [TestMethod()]
-        public void GetStopsRequiredTestForFalcon()
+        public void GetStopsRequired_TestForFalcon()
         {
             // Setup test data
             int expected = 9;
@@ -38,7 +38,7 @@ namespace KneatAssignment.Tests
         }
 
         [TestMethod()]
-        public void GetStopsRequiredTestForRebelTransport()
+        public void GetStopsRequired_TestForRebelTransport()
         {
             // Setup test data
             int expected = 11;
